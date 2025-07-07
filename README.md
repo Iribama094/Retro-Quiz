@@ -1,4 +1,4 @@
-# 🎮 Retro Quiz Arcade
+# Retro Quiz Arcade
 
 A spectacular retro-themed quiz game with neon aesthetics, multiple categories, and engaging visual effects. Test your knowledge across 9 different categories with 25 questions each!
 
@@ -7,20 +7,20 @@ A spectacular retro-themed quiz game with neon aesthetics, multiple categories, 
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
-## ✨ Features
+## Features
 
-### 🎯 **Quiz Categories (225+ Questions)**
-- 🧠 **General Knowledge** - World facts and trivia
-- 🔬 **Science & Nature** - Scientific discoveries and natural world
-- 🏛️ **History** - Historical events and figures
-- 🎬 **Movies** - Cinema and entertainment
-- 🎮 **Video Games** - Gaming culture and history
-- 🎵 **Music** - Musical knowledge and artists
-- ⚽ **Soccer** - Football facts and recent events
-- 🎶 **Afrobeats** - Nigerian music and artists
-- 🇳🇬 **Nigerian History & Politics** - Nigerian heritage and governance
+### **Quiz Categories (225+ Questions)**
+-  **General Knowledge** - World facts and trivia
+-  **Science & Nature** - Scientific discoveries and natural world
+-  **History** - Historical events and figures
+-  **Movies** - Cinema and entertainment
+-  **Video Games** - Gaming culture and history
+-  **Music** - Musical knowledge and artists
+-  **Soccer** - Football facts and recent events
+-  **Afrobeats** - Nigerian music and artists
+-  **Nigerian History & Politics** - Nigerian heritage and governance
 
-### 🎨 **Visual Experience**
+###  **Visual Experience**
 - **3 Retro Themes**: Neon, Pixel, and Synth
 - **Matrix Rain Effects** with floating particles
 - **Holographic Text** with scan line animations
@@ -28,7 +28,7 @@ A spectacular retro-themed quiz game with neon aesthetics, multiple categories, 
 - **Lightning Effects** and particle systems
 - **Responsive Design** for all devices
 
-### 🎮 **Game Features**
+###  **Game Features**
 - **Timed Questions** (15 seconds per question)
 - **Visual Feedback** (green for correct, red for wrong)
 - **Auto-progression** to next question
@@ -36,7 +36,7 @@ A spectacular retro-themed quiz game with neon aesthetics, multiple categories, 
 - **Progress Indicators** and completion stats
 - **Theme Switching** on the fly
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### **Quick Start**
 1. Clone the repository:
@@ -60,10 +60,10 @@ A spectacular retro-themed quiz game with neon aesthetics, multiple categories, 
    # Or simply open index.html in your browser
    ```
 
-4. Start playing! 🎉
+4. Start playing!
 
 ### **Live Demo**
-🌐 [Play Now](https://yourusername.github.io/retro-quiz-arcade)
+🌐 [Play Now](https://iribama094.github.io/retro-quiz-arcade)
 
 ## 📁 Project Structure
 
@@ -77,7 +77,7 @@ retro-quiz-arcade/
 └── .gitignore          # Git ignore rules
 ```
 
-## 🎯 How to Play
+## How to Play
 
 1. **Choose Your Theme** - Select from Neon, Pixel, or Synth themes
 2. **Start Game** - Click "START GAME" from the main menu
@@ -87,7 +87,7 @@ retro-quiz-arcade/
 6. **Play!** - Answer questions within the time limit
 7. **View Results** - See your score and performance stats
 
-## 🛠️ Technical Details
+##  Technical Details
 
 ### **Built With**
 - **HTML5** - Semantic structure
@@ -111,7 +111,7 @@ retro-quiz-arcade/
 - Particle floating systems
 - Lightning and scan line effects
 
-## 🎨 Customization
+##  Customization
 
 ### **Adding New Categories**
 1. Open `script.js`
@@ -137,7 +137,7 @@ retro-quiz-arcade/
    ```
 3. Add theme button in `index.html`
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Here's how you can help:
 
@@ -148,31 +148,30 @@ Contributions are welcome! Here's how you can help:
 5. **Open** a Pull Request
 
 ### **Ideas for Contributions**
-- 🎵 Add sound effects
-- 🏆 Implement leaderboards
-- 📱 Improve mobile experience
-- 🌍 Add more languages
-- 🎯 Create new question categories
-- 🎨 Design new themes
+-  Add sound effects
+-  Implement leaderboards
+-  Improve mobile experience
+-  Add more languages
+-  Create new question categories
+-  Design new themes
 
-## 📝 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Fela Kuti** - Inspiration for Afrobeats category
 - **Nigerian Culture** - Rich history and politics questions
 - **Retro Gaming** - Aesthetic inspiration
 - **Open Source Community** - Tools and libraries used
 
-## 📞 Contact
+##  Contact
 
-- **GitHub**: [@yourusername](https://github.com/yourusername)
+- **GitHub**: [@yourusername](https://github.com/iribama094)
 - **Email**: your.email@example.com
 
 ---
 
-⭐ **Star this repository if you found it helpful!** ⭐
+ **Star this repository if you found it helpful!** 
 
-Made with ❤️ and lots of ☕
