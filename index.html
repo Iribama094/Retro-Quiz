@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Quiz Arcade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Mono+One&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-neon bg-[var(--bg)] min-h-screen text-white transition-colors duration-500">
+    <div id="app" class="min-h-screen flex flex-col items-center justify-center p-4">
+        <!-- Landing Screen -->
+        <div id="landing-screen" class="arcade-screen w-full max-w-4xl rounded-lg p-8 text-center relative overflow-hidden glow-border">
+            <div class="absolute inset-0 bg-black opacity-20"></div>
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]"></div>
+
+            <!-- Matrix Rain Effect -->
+            <div class="matrix-bg" id="matrix-container"></div>
+
+            <!-- Scan Lines -->
+            <div class="scan-line" style="animation-delay: 0s;"></div>
+            <div class="scan-line" style="animation-delay: 1s;"></div>
+
+            <!-- Lightning Effects -->
+            <div class="lightning-effect" style="left: 10%; animation-delay: 0.5s;"></div>
+            <div class="lightning-effect" style="right: 15%; animation-delay: 2s;"></div>
+
+            <!-- Floating Particles -->
+            <div class="particle" style="top: 20%; left: 80%; animation-delay: 0s;"></div>
+            <div class="particle" style="top: 60%; left: 10%; animation-delay: 1s;"></div>
+            <div class="particle" style="top: 40%; right: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="bottom: 30%; left: 30%; animation-delay: 1.5s;"></div>
+            <div class="relative z-10">
+                <h1 class="neon-text retro-font text-5xl md:text-7xl mb-6 hologram-effect">
+                    <i class="fas fa-gamepad category-icon"></i>
+                    RETRO QUIZ ARCADE
+                    <i class="fas fa-bolt category-icon"></i>
+                </h1>
+                <p class="pixel-font text-xl mb-12 hologram-effect">Test your knowledge in this electrifying trivia challenge!</p>
+                
+                <div class="flex flex-col md:flex-row justify-center gap-6 mb-12">
+                    <button onclick="showScreen('setup-screen')" class="arcade-button pulse-button pixel-font bg-[var(--primary)] hover:bg-[var(--secondary)] text-white py-4 px-8 rounded-lg text-xl transition-all duration-300 transform hover:scale-105">
+                        START GAME
+                    </button>
+                    <button onclick="showScreen('join-screen')" class="arcade-button pixel-font bg-[var(--secondary)] hover:bg-[var(--primary)] text-white py-4 px-8 rounded-lg text-xl transition-all duration-300 transform hover:scale-105">
+                        JOIN GAME
+                    </button>
+                    <button onclick="showScreen('leaderboard-screen')" class="arcade-button pixel-font bg-[var(--accent)] hover:bg-[var(--primary)] text-black py-4 px-8 rounded-lg text-xl transition-all duration-300 transform hover:scale-105">
+                        LEADERBOARD
+                    </button>
+                </div>
+                
+                <div class="flex justify-center gap-4 mb-4">
+                    <span class="pixel-font">THEME:</span>
+                    <button onclick="setTheme('neon')" class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-blue-500"></button>
+                    <button onclick="setTheme('pixel')" class="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-green-500"></button>
+                    <button onclick="setTheme('synth')" class="w-8 h-8 rounded-full bg-gradient-to-br from-red-400 to-teal-400"></button>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-[var(--primary)] animate-pulse"></div>
+                <div class="w-3 h-3 rounded-full bg-[var(--secondary)] animate-pulse delay-100"></div>
+                <div class="w-3 h-3 rounded-full bg-[var(--accent)] animate-pulse delay-200"></div>
+            </div>
+        </div>
+
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="hidden arcade-screen w-full max-w-4xl rounded-lg p-8 relative overflow-hidden">
+            <button onclick="showScreen('landing-screen')" class="absolute top-4 left-4 pixel-font bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg">
+                <i class="fas fa-arrow-left"></i> BACK
+            </button>
+
+            <div class="text-center mb-8">
+                <h2 class="neon-text retro-font text-4xl mb-4">GAME SETUP</h2>
+                <p class="pixel-font text-lg">Customize your quiz experience</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-black bg-opacity-30 p-6 rounded-lg border-2 border-[var(--primary)]">
+                    <h3 class="pixel-font text-xl mb-4 text-[var(--primary)]">CATEGORY</h3>
+                    <select id="category-select" class="w-full pixel-font bg-black text-white p-3 rounded-lg border-2 border-[var(--secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]">
+                        <option value="general">🧠 General Knowledge</option>
+                        <option value="science">🔬 Science & Nature</option>
+                        <option value="history">🏛️ History</option>
+                        <option value="movies">🎬 Movies</option>
+                        <option value="videogames">🎮 Video Games</option>
+                        <option value="music">🎵 Music</option>
+                        <option value="soccer">⚽ Soccer</option>
+                        <option value="afrobeats">🎶 Afrobeats</option>
+                        <option value="nigeria">🇳🇬 Nigerian History & Politics</option>
+                    </select>
+                </div>
+
+                <div class="bg-black bg-opacity-30 p-6 rounded-lg border-2 border-[var(--secondary)]">
+                    <h3 class="pixel-font text-xl mb-4 text-[var(--secondary)]">DIFFICULTY</h3>
+                    <div class="flex justify-between">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="difficulty" checked class="form-radio h-5 w-5 text-[var(--primary)]">
+                            <span class="ml-2 pixel-font">Easy</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="difficulty" class="form-radio h-5 w-5 text-[var(--secondary)]">
+                            <span class="ml-2 pixel-font">Medium</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="difficulty" class="form-radio h-5 w-5 text-[var(--accent)]">
+                            <span class="ml-2 pixel-font">Hard</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-black bg-opacity-30 p-6 rounded-lg border-2 border-[var(--accent)]">
+                    <h3 class="pixel-font text-xl mb-4 text-[var(--accent)]">QUESTIONS</h3>
+                    <input type="range" min="5" max="20" value="10" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[var(--primary)]">
+                    <div class="flex justify-between mt-2">
+                        <span class="pixel-font">5</span>
+                        <span class="pixel-font">10</span>
+                        <span class="pixel-font">15</span>
+                        <span class="pixel-font">20</span>
+                    </div>
+                </div>
+
+                <div class="bg-black bg-opacity-30 p-6 rounded-lg border-2 border-[var(--primary)]">
+                    <h3 class="pixel-font text-xl mb-4 text-[var(--primary)]">TIME PER QUESTION</h3>
+                    <div class="flex items-center gap-4">
+                        <button class="pixel-font bg-[var(--secondary)] hover:bg-[var(--primary)] text-black py-2 px-4 rounded-lg">-</button>
+                        <span class="pixel-font text-2xl">15</span>
+                        <span class="pixel-font">seconds</span>
+                        <button class="pixel-font bg-[var(--secondary)] hover:bg-[var(--primary)] text-black py-2 px-4 rounded-lg">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button onclick="startQuiz()" class="arcade-button pulse-button pixel-font bg-[var(--primary)] hover:bg-[var(--secondary)] text-white py-4 px-12 rounded-lg text-2xl transition-all duration-300 transform hover:scale-105">
+                    START QUIZ
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden arcade-screen w-full max-w-4xl rounded-lg p-8 relative overflow-hidden glow-border">
+            <div class="flex justify-between items-center mb-8">
+                <div class="pixel-font text-lg">
+                    QUESTION <span id="current-question">1</span>/<span id="total-questions">10</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 relative">
+                        <svg class="progress-ring w-8 h-8" viewBox="0 0 36 36">
+                            <circle class="progress-ring__circle" stroke="var(--primary)" stroke-width="3" fill="transparent" r="16" cx="18" cy="18"></circle>
+                        </svg>
+                        <span id="time-left" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pixel-font text-xs">15</span>
+                    </div>
+                    <span class="pixel-font">SCORE: <span id="current-score">0</span></span>
+                </div>
+            </div>
+
+            <div id="question-container" class="bg-black bg-opacity-30 p-6 mb-8 rounded-lg border-2 border-[var(--primary)] min-h-32 flex items-center justify-center">
+                <h3 id="question-text" class="pixel-font text-xl md:text-2xl text-center">Loading question...</h3>
+            </div>
+
+            <div id="answers-container" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <!-- Answers will be inserted here by JavaScript -->
+            </div>
+
+            <div class="w-full bg-gray-800 rounded-full h-4 mb-4 overflow-hidden">
+                <div id="progress-bar" class="bg-[var(--primary)] h-4 rounded-full relative" style="width: 0%">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white opacity-30 animate-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="hidden arcade-screen w-full max-w-4xl rounded-lg p-8 relative overflow-hidden text-center glow-border">
+            <div class="matrix-bg" id="results-matrix"></div>
+
+            <div class="relative z-10">
+                <h2 class="neon-text retro-font text-5xl mb-6">GAME OVER!</h2>
+
+                <div class="bg-black bg-opacity-50 p-8 rounded-lg border-2 border-[var(--secondary)] max-w-md mx-auto mb-8">
+                    <div class="flex justify-between mb-4">
+                        <div>
+                            <div class="pixel-font text-sm">SCORE</div>
+                            <div id="final-score" class="text-4xl font-bold text-[var(--primary)]">850</div>
+                        </div>
+                        <div>
+                            <div class="pixel-font text-sm">CORRECT</div>
+                            <div id="correct-answers" class="text-4xl font-bold text-[var(--secondary)]">8/10</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="pixel-font text-sm">TIME</div>
+                        <div id="time-taken" class="text-xl text-[var(--accent)]">2:15</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-center gap-6">
+                    <button onclick="startQuiz()" class="arcade-button pixel-font bg-[var(--primary)] hover:bg-[var(--secondary)] text-white py-3 px-6 rounded-lg text-xl transition-all duration-300 transform hover:scale-105">
+                        PLAY AGAIN
+                    </button>
+                    <button onclick="showScreen('landing-screen')" class="arcade-button pixel-font bg-[var(--secondary)] hover:bg-[var(--primary)] text-white py-3 px-6 rounded-lg text-xl transition-all duration-300 transform hover:scale-105">
+                        MAIN MENU
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

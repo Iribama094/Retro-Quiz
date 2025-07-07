@@ -1,0 +1,63 @@
+{
+  "name": "retro-quiz-arcade",
+  "version": "1.0.0",
+  "description": "A spectacular retro-themed quiz game with neon aesthetics, multiple categories, and engaging visual effects",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . --live",
+    "build": "echo 'No build process needed for vanilla HTML/CSS/JS'",
+    "test": "echo 'No tests specified yet'",
+    "lint": "echo 'No linting configured yet'",
+    "deploy": "echo 'Deploy to GitHub Pages or your preferred hosting'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/retro-quiz-arcade.git"
+  },
+  "keywords": [
+    "quiz",
+    "game",
+    "retro",
+    "arcade",
+    "trivia",
+    "javascript",
+    "html5",
+    "css3",
+    "neon",
+    "afrobeats",
+    "nigeria",
+    "education",
+    "entertainment",
+    "responsive",
+    "mobile-friendly"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://github.com/yourusername"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/retro-quiz-arcade/issues"
+  },
+  "homepage": "https://yourusername.github.io/retro-quiz-arcade",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "devDependencies": {},
+  "dependencies": {},
+  "files": [
+    "index.html",
+    "styles.css",
+    "script.js",
+    "README.md",
+    "LICENSE"
+  ]
+}

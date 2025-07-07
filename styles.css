@@ -1,0 +1,292 @@
+/* Retro Quiz Arcade - Styles */
+
+/* Keyframe Animations */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 20px #0fa,
+            0 0 40px #0fa,
+            0 0 80px #0fa;
+    }
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px) rotate(-2deg); }
+    20%, 40%, 60%, 80% { transform: translateX(5px) rotate(2deg); }
+}
+
+@keyframes progress-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes matrix-rain {
+    0% { transform: translateY(-100vh); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes hologram {
+    0%, 100% {
+        transform: skew(0deg, 0deg);
+        filter: hue-rotate(0deg);
+    }
+    25% {
+        transform: skew(1deg, 0deg);
+        filter: hue-rotate(90deg);
+    }
+    50% {
+        transform: skew(0deg, 1deg);
+        filter: hue-rotate(180deg);
+    }
+    75% {
+        transform: skew(-1deg, 0deg);
+        filter: hue-rotate(270deg);
+    }
+}
+
+@keyframes scan-lines {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 15px var(--primary);
+    }
+    50% {
+        box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary), 0 0 40px var(--primary);
+    }
+}
+
+@keyframes particle-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+    50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+}
+
+@keyframes lightning {
+    0%, 90%, 100% { opacity: 0; }
+    5%, 85% { opacity: 1; }
+}
+
+/* Base Classes */
+.animate-progress {
+    animation: progress-pulse 1.5s infinite;
+}
+
+.neon-text {
+    animation: flicker 3s infinite alternate;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-stroke: 1px rgba(255,255,255,0.5);
+    -webkit-text-stroke: 1px rgba(255,255,255,0.5);
+}
+
+.pulse-button {
+    animation: pulse 2s infinite;
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+.pixel-border {
+    border-style: solid;
+    border-width: 4px;
+    border-image: repeating-linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff, #00ffff) 10;
+}
+
+.arcade-screen {
+    background: radial-gradient(circle at center, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    box-shadow: inset 0 0 50px rgba(0, 255, 255, 0.3);
+}
+
+/* Theme Variables */
+.theme-neon {
+    --primary: #ff00ff;
+    --secondary: #00ffff;
+    --accent: #ffcc00;
+    --bg: #1a1a2e;
+}
+
+.theme-pixel {
+    --primary: #ff3366;
+    --secondary: #66ff33;
+    --accent: #3366ff;
+    --bg: #222;
+}
+
+.theme-synth {
+    --primary: #ff6b6b;
+    --secondary: #4ecdc4;
+    --accent: #ffe66d;
+    --bg: #0f0c29;
+}
+
+/* Answer States */
+.answer-correct {
+    background-color: rgba(0, 255, 0, 0.3);
+    border: 2px solid #00ff00;
+    animation: pulse 0.5s 3, float 1s ease-in-out;
+    box-shadow: 0 0 20px #00ff00;
+}
+
+.answer-wrong {
+    background-color: rgba(255, 0, 0, 0.3);
+    border: 2px solid #ff0000;
+    animation: shake 0.5s, pulse 0.5s 3;
+    box-shadow: 0 0 20px #ff0000;
+}
+
+/* Button Styles */
+.arcade-button {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.arcade-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+    transition: all 0.5s;
+}
+
+.arcade-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.4);
+}
+
+.arcade-button:hover::before {
+    left: 100%;
+}
+
+.arcade-button:active {
+    transform: translateY(1px);
+}
+
+/* Progress Ring */
+.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.5s;
+    stroke-linecap: round;
+}
+
+/* Typography */
+.pixel-font {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.retro-font {
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+/* Enhanced Graphics */
+.matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.matrix-char {
+    position: absolute;
+    color: var(--primary);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    animation: matrix-rain 3s linear infinite;
+    opacity: 0.3;
+}
+
+.hologram-effect {
+    animation: hologram 4s infinite;
+}
+
+.scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+    animation: scan-lines 2s linear infinite;
+    opacity: 0.5;
+}
+
+.glow-border {
+    animation: glow-pulse 2s infinite;
+    border: 2px solid var(--primary);
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: particle-float 4s infinite;
+}
+
+.lightning-effect {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--secondary), transparent);
+    animation: lightning 3s infinite;
+}
+
+.category-icon {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.2em;
+    animation: float 2s ease-in-out infinite;
+}
